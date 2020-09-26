@@ -2,7 +2,7 @@
 SRP is a Minecraft Forge mod that allows you to hide selected players.
 
 ## Usage
-Download the latest release from [here.]()
+Download the latest release from [here.](https://github.com/ItsSyfe/SRP/releases/latest)
 
 
 ## Contributing
