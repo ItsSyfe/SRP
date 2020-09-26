@@ -1,0 +1,16 @@
+[
+{
+  "modid": "srp",
+  "name": "Select Render Player",
+  "description": "A basic mod for Hypixel Skyblock that allows you to hide all player but a selected player, useful for hub drops.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Syfe"],
+  "credits": "Forge (for being the only mod loader that is decent for 1.8.9)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
