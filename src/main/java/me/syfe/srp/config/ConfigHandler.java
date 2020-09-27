@@ -2,15 +2,9 @@ package me.syfe.srp.config;
 
 
 import java.io.File;
-
-import me.syfe.srp.SRP;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ConfigHandler {
     private static Configuration config = null;
@@ -18,6 +12,7 @@ public class ConfigHandler {
 
     public static boolean renderPlayers;
     public static String playersToRender;
+    public static String whitelistedPlayers;
 
     public static void preInit() {
         File configFile = new File(Loader.instance().getConfigDir(), "SRP.cfg");
@@ -27,10 +22,6 @@ public class ConfigHandler {
 
     public static Configuration getConfig() {
         return config;
-    }
-
-    public static void clientPreInit() {
-        MinecraftForge.EVENT_BUS.register(new ConfigEventHandler());
     }
 
     public static void syncFromFiles() {
@@ -51,27 +42,19 @@ public class ConfigHandler {
 
         Property propertyRenderPlayers = config.get(Configuration.CATEGORY_GENERAL, "renderPlayers", true);
         Property propertyPlayersToRender = config.get(Configuration.CATEGORY_GENERAL, "playersToRender", "");
+        Property propertyWhitelistedPlayers = config.get(Configuration.CATEGORY_GENERAL, "whitelistedPlayers", "");
 
         if(readFieldsFromConfig) {
             renderPlayers = propertyRenderPlayers.getBoolean();
             playersToRender = propertyPlayersToRender.getString();
+            whitelistedPlayers = propertyWhitelistedPlayers.getString();
         }
 
         propertyRenderPlayers.set(renderPlayers);
         propertyPlayersToRender.set(playersToRender);
+        propertyWhitelistedPlayers.set(whitelistedPlayers);
 
         if(config.hasChanged())
             config.save();
-    }
-
-    public static class ConfigEventHandler {
-
-        @SubscribeEvent(priority = EventPriority.LOWEST)
-        public void onEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
-            if(event.modID.equalsIgnoreCase(SRP.MODID)) {
-                syncFromGui();
-            }
-        }
-
     }
 }

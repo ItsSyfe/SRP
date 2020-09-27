@@ -1,0 +1,4 @@
+key.togglesrp=Toggles whether or not all players are rendered
+key.opengui=Open's the GUI
+key.categories.srp=Select Player Renderer
+gui.description.renderplayers=Toggles whether or not all players are rendered

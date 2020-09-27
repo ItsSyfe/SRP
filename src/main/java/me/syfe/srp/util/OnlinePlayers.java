@@ -1,5 +1,6 @@
-package me.syfe.srp;
+package me.syfe.srp.util;
 
+import me.syfe.srp.SRP;
 import net.minecraft.client.network.NetworkPlayerInfo;
 
 import java.util.ArrayList;
